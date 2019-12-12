@@ -1,5 +1,5 @@
 |Station|Sites|Province or Territory|Latitude|Longitude|
-|------------------------------------------------------|
+|-------|-----|---------------------|--------|---------|
 |382|Abbotts Harbour|Nova Scotia|43.6667|-65.8167|
 |380|Abrams River|Nova Scotia|43.8333|-65.95|
 |4170|Acadia Cove|Nunavut|61.35|-64.9|
