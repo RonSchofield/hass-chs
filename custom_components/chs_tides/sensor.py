@@ -28,7 +28,7 @@ DEFAULT_NAME = 'CHS Tide Sensor'
 SCAN_INTERVAL = timedelta(seconds=60)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_ID, default=0): cv.positive_int,
+    vol.Required(CONF_ID, default="00490"): cv.string,
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Optional(CONF_UNIT_OF_MEASUREMENT, default="m"): cv.string,
     vol.Optional(CONF_OFFSET, default=0): cv.positive_int,
@@ -77,6 +77,10 @@ class CHSTideSensor(Entity):
 
     def update(self):
         """Get the tide information"""
+        prediction = Predictions(self.station_id)
+        if (self._state == None):
+            high_low = prediction.high_low()
+            self._state = high_low['status']
 
 
 def event_list(event_id=0, clear=False, lst=[]):
