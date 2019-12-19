@@ -1,0 +1,8 @@
+{
+  "domain": "chs_tides",
+  "name": "Canadian Hydrographic Service (CHS) Tides",
+  "documentation": "https://github.com/RonSchofield/hass-chs",
+  "dependencies": [],
+  "codeowners": ["@RonSchofield"],
+  "requirements": ["pychs==0.1.0","zeep==3.4.0"]
+}
