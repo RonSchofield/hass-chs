@@ -54,6 +54,10 @@ class CHSTideSensor(Entity):
         self._icon = 'mdi:current-ac'
         self._scan_interval = scan_interval
         self._state_attributes = {}
+        #try to catch error
+        self.prediction = Predictions(self.station_id)
+        self.data = {}
+        self.next_event_dt = 0
 
     @property
     def name(self):
@@ -77,11 +81,52 @@ class CHSTideSensor(Entity):
 
     def update(self):
         """Get the tide information"""
-        prediction = Predictions(self.station_id)
+        minute_hand = dt.utcnow().minute  
         if (self._state == None):
-            high_low = prediction.high_low()
-            self._state = high_low['status']
+            _LOGGER.debug("Initialization")
+            # Get the high low data 
+            self.update_hilo()
+            # Get the 15 minute water levels
+            self.data['wl15'] = self.prediction.water_level()
+            self.set_wl15_state_attributes(quarter_round(minute_hand))
+        else:
+            quartersList = [15,30,45]
+            if (minute_hand == 0):
+                # At the top of the hour, get the new 15 minute water levels
+                _LOGGER.debug("Top of the hour")
+                self.data['wl15'] = self.prediction.water_level()
+                self.set_wl15_state_attributes()
+            elif (minute_hand in quartersList):
+                # If at the quarter, update the tide level
+                _LOGGER.debug("Quarter")
+                self.set_wl15_state_attributes(minute_hand)
+        
+        # Check for the tide event (low or high)
+        if(dt.utcnow() > self.next_event_dt):
+            _LOGGER.debug("Next event has occured")
+            self.update_hilo()
 
+    def update_hilo(self):
+        high_low = self.prediction.high_low()
+        self._state = high_low['status']
+        self._state_attributes['state'] = self._state
+        self._state_attributes['previous_hilo_event'] = high_low['previous']['event']
+        self._state_attributes['previous_hilo_height'] = high_low['previous']['height']
+        self._state_attributes['previous_hilo_date'] = high_low['previous']['date']
+        self._state_attributes['next_hilo_event'] = high_low['next']['event']
+        self._state_attributes['next_hilo_height'] = high_low['next']['height']
+        self._state_attributes['next_hilo_date'] = high_low['next']['date']
+        self.data['hilo'] = high_low
+        self.next_event_dt = dt.strptime(high_low['next']['date'],"%Y-%m-%d %H:%M:%S")
+
+    def set_wl15_state_attributes(self, minute_hand=0):
+        index = "{:02d}".format(minute_hand)
+        self._state_attributes['current_height'] = self.data['wl15'][index]['height']
+        self._state_attributes['current_height_as_of'] = self.data['wl15'][index]['date']
+
+def quarter_round(x):
+    #return 15 * round(x/15)
+    return x - (x % 15)
 
 def event_list(event_id=0, clear=False, lst=[]):
     lst.append(event_id)
