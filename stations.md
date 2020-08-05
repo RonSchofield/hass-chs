@@ -1,51 +1,51 @@
 |Station|Sites|Province or Territory|Latitude|Longitude|
 |-------|-----|---------------------|--------|---------|
-|382|Abbotts Harbour|Nova Scotia|43.6667|-65.8167|
-|380|Abrams River|Nova Scotia|43.8333|-65.95|
-|4170|Acadia Cove|Nunavut|61.35|-64.9|
-|8865|Adams Harbour|British Columbia|51.6833|-128.1|
-|8860|Addenbroke Island|British Columbia|51.6|-127.8333|
-|236|Advocate Harbour|Nova Scotia|45.3333|-64.7833|
-|4335|Agvik Island|Nunavut|60.0167|-69.7|
-|6765|Airstrip Point|Nunavut|76.0833|-97.7333|
-|4538|Akulivik|Quebec|60.8|-78.2167|
-|1885|Alberton|Prince Edward Island|46.8|-64.0667|
-|3765|Alert|Nunavut|82.5|-62.3167|
-|8280|Alert Bay|British Columbia|50.5833|-126.9333|
-|3838|Alexandra Fiord|Nunavut|78.9118|-75.4795|
-|9448|Alice Arm|British Columbia|55.4667|-129.5|
-|8488|Alison Sound|British Columbia|51.1667|-126.9833|
-|2637|Anchor Point|Newfoundland and Labrador|51.2333|-56.8|
-|2295|Anse-à-Beaufils|Quebec|48.472|-64.3086|
-|2314|Anse-à-Brillant|Quebec|48.7207|-64.2906|
-|2335|Anse-à-Valleau|Quebec|49.0833|-64.5333|
-|1590|Antigonish Harbour|Nova Scotia|45.6667|-61.9167|
-|5865|Arctic Bay|Nunavut|73.0333|-85.1667|
-|835|Argentia |Newfoundland and Labrador|47.3|-53.9833|
-|580|Arichat|Nova Scotia|45.5167|-61.0333|
-|1610|Arisaig|Nova Scotia|45.7667|-62.1667|
-|818|Arnold´s Cove|Newfoundland and Labrador|47.75|-54|
-|5040|Arviat (Eskimo Point)|Nunavut|61.1167|-94.0667|
-|4215|Ashe Inlet|Nunavut|62.55|-70.583|
-|6476|Atkinson Point|Northwest Territories|69.95|-131.4167|
-|9765|Atli Inlet|British Columbia|52.7167|-131.5833|
-|1570|Aulds Cove|Nova Scotia|45.65|-61.4333|
-|6284|Austin Bay |Nunavut|68.5167|-113.2|
-|30|Back Bay|New Brunswick|45.05|-66.8667|
-|2581|Baie Chevalier|Quebec|51.4325|-57.6385|
-|1110|Baie Verte|Newfoundland and Labrador|49.95|-56.1833|
-|2840|Baie-Comeau|Quebec|49.2333|-68.1333|
-|2556|Baie-des-Moutons|Quebec|50.7667|-59.0333|
-|2415|Baie-du-Renard|Quebec|49.2817|-61.834|
-|2490|Baie-Johan-Beetz|Quebec|50.2833|-62.8|
-|2815|Baie-Trinité|Quebec|49.4233|-67.2897|
-|6443|Baillies Islands|Northwest Territories|70.5167|-128.35|
-|1600|Ballantynes Cove|Nova Scotia|45.8667|-61.9167|
-|8545|Bamfield |British Columbia|48.8333|-125.1333|
-|3075|Banc du Cap Brulé|Quebec|46.9157|-70.8965|
-|9115|Barnard Harbour|British Columbia|53.0667|-129.1167|
-|415|Barrington Passage|Nova Scotia|43.5333|-65.6167|
-|2130|Bathurst|New Brunswick|47.6167|-65.65|
+|00382|Abbotts Harbour|Nova Scotia|43.6667|-65.8167|
+|00380|Abrams River|Nova Scotia|43.8333|-65.95|
+|04170|Acadia Cove|Nunavut|61.35|-64.9|
+|08865|Adams Harbour|British Columbia|51.6833|-128.1|
+|08860|Addenbroke Island|British Columbia|51.6|-127.8333|
+|00236|Advocate Harbour|Nova Scotia|45.3333|-64.7833|
+|04335|Agvik Island|Nunavut|60.0167|-69.7|
+|06765|Airstrip Point|Nunavut|76.0833|-97.7333|
+|04538|Akulivik|Quebec|60.8|-78.2167|
+|01885|Alberton|Prince Edward Island|46.8|-64.0667|
+|03765|Alert|Nunavut|82.5|-62.3167|
+|08280|Alert Bay|British Columbia|50.5833|-126.9333|
+|03838|Alexandra Fiord|Nunavut|78.9118|-75.4795|
+|09448|Alice Arm|British Columbia|55.4667|-129.5|
+|08488|Alison Sound|British Columbia|51.1667|-126.9833|
+|02637|Anchor Point|Newfoundland and Labrador|51.2333|-56.8|
+|02295|Anse-à-Beaufils|Quebec|48.472|-64.3086|
+|02314|Anse-à-Brillant|Quebec|48.7207|-64.2906|
+|02335|Anse-à-Valleau|Quebec|49.0833|-64.5333|
+|01590|Antigonish Harbour|Nova Scotia|45.6667|-61.9167|
+|05865|Arctic Bay|Nunavut|73.0333|-85.1667|
+|00835|Argentia |Newfoundland and Labrador|47.3|-53.9833|
+|00580|Arichat|Nova Scotia|45.5167|-61.0333|
+|01610|Arisaig|Nova Scotia|45.7667|-62.1667|
+|00818|Arnold´s Cove|Newfoundland and Labrador|47.75|-54|
+|05040|Arviat (Eskimo Point)|Nunavut|61.1167|-94.0667|
+|04215|Ashe Inlet|Nunavut|62.55|-70.583|
+|06476|Atkinson Point|Northwest Territories|69.95|-131.4167|
+|09765|Atli Inlet|British Columbia|52.7167|-131.5833|
+|01570|Aulds Cove|Nova Scotia|45.65|-61.4333|
+|06284|Austin Bay |Nunavut|68.5167|-113.2|
+|00030|Back Bay|New Brunswick|45.05|-66.8667|
+|02581|Baie Chevalier|Quebec|51.4325|-57.6385|
+|01110|Baie Verte|Newfoundland and Labrador|49.95|-56.1833|
+|02840|Baie-Comeau|Quebec|49.2333|-68.1333|
+|02556|Baie-des-Moutons|Quebec|50.7667|-59.0333|
+|02415|Baie-du-Renard|Quebec|49.2817|-61.834|
+|02490|Baie-Johan-Beetz|Quebec|50.2833|-62.8|
+|02815|Baie-Trinité|Quebec|49.4233|-67.2897|
+|06443|Baillies Islands|Northwest Territories|70.5167|-128.35|
+|01600|Ballantynes Cove|Nova Scotia|45.8667|-61.9167|
+|08545|Bamfield |British Columbia|48.8333|-125.1333|
+|03075|Banc du Cap Brulé|Quebec|46.9157|-70.8965|
+|09115|Barnard Harbour|British Columbia|53.0667|-129.1167|
+|00415|Barrington Passage|Nova Scotia|43.5333|-65.6167|
+|02130|Bathurst|New Brunswick|47.6167|-65.65|
 |3345|Batiscan |Quebec|46.5|-72.25|
 |1190|Battle Harbour|Newfoundland and Labrador|52.2667|-55.6|
 |305|Baxters Harbour|Nova Scotia|45.2333|-64.5167|

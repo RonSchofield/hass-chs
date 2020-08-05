@@ -39,21 +39,24 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the CHS Tide sensor."""
     station_id = config.get(CONF_ID)
     name = config.get(CONF_NAME, DEFAULT_NAME)
+    uom = config.get(CONF_UNIT_OF_MEASUREMENT)
     scan_interval = config.get(CONF_SCAN_INTERVAL, SCAN_INTERVAL)
-    add_entities([CHSTideSensor(station_id, name, scan_interval)], True)
+    add_entities([CHSTideSensor(station_id, name, uom, scan_interval)], True)
 
 
 class CHSTideSensor(Entity):
     """Representation of a CHS Tide sensor."""
 
-    def __init__(self, station_id, name, scan_interval):
+    def __init__(self, station_id, name, uom, scan_interval):
         """Initialize CHS Tide sensor."""
         self._state = None
         self.station_id = station_id
         self._name = name
+        self.uom = uom
         self._icon = 'mdi:current-ac'
         self._scan_interval = scan_interval
         self._state_attributes = {}
+        self._state_attributes['uom'] = uom
         #try to catch error
         self.prediction = Predictions(self.station_id)
         self.data = {}
@@ -86,6 +89,8 @@ class CHSTideSensor(Entity):
             _LOGGER.debug("Initialization")
             # Get the high low data 
             self.update_hilo()
+            # Get the station name
+            self._state_attributes['station_name'] = self.prediction.stationName
             # Get the 15 minute water levels
             self.data['wl15'] = self.prediction.water_level()
             self.set_wl15_state_attributes(quarter_round(minute_hand))
@@ -111,18 +116,25 @@ class CHSTideSensor(Entity):
         self._state = high_low['status']
         self._state_attributes['state'] = self._state
         self._state_attributes['previous_hilo_event'] = high_low['previous']['event']
-        self._state_attributes['previous_hilo_height'] = high_low['previous']['height']
+        self._state_attributes['previous_hilo_height'] = self.uom_height(high_low['previous']['height'])
         self._state_attributes['previous_hilo_date'] = high_low['previous']['date']
         self._state_attributes['next_hilo_event'] = high_low['next']['event']
-        self._state_attributes['next_hilo_height'] = high_low['next']['height']
+        self._state_attributes['next_hilo_height'] = self.uom_height(high_low['next']['height'])
         self._state_attributes['next_hilo_date'] = high_low['next']['date']
         self.data['hilo'] = high_low
         self.next_event_dt = dt.strptime(high_low['next']['date'],"%Y-%m-%d %H:%M:%S")
 
     def set_wl15_state_attributes(self, minute_hand=0):
         index = "{:02d}".format(minute_hand)
-        self._state_attributes['current_height'] = self.data['wl15'][index]['height']
+        self._state_attributes['current_height'] = self.uom_height(self.data['wl15'][index]['height'])
         self._state_attributes['current_height_as_of'] = self.data['wl15'][index]['date']
+
+    def uom_height(self, height):
+        if (self.uom == 'ft'):
+            return "{:.1f}".format(float(height) * 3.28084)
+        else:
+            return height
+
 
 def quarter_round(x):
     #return 15 * round(x/15)
