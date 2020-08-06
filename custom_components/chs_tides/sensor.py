@@ -53,7 +53,7 @@ class CHSTideSensor(Entity):
         self.station_id = station_id
         self._name = name
         self.uom = uom
-        self._icon = 'mdi:current-ac'
+        self._icon = 'mdi:sine-wave'
         self._scan_interval = scan_interval
         self._state_attributes = {}
         self._state_attributes['uom'] = uom
