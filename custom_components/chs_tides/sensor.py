@@ -6,7 +6,7 @@ https://github.com/RonSchofield/hass-cms/blob/master/README.md
 """
 
 import logging
-from datetime import timedelta, datetime as dt
+from datetime import timedelta, timezone, datetime as dt
 from pychs import Predictions
 import voluptuous as vol
 
@@ -117,17 +117,17 @@ class CHSTideSensor(Entity):
         self._state_attributes['state'] = self._state
         self._state_attributes['previous_hilo_event'] = high_low['previous']['event']
         self._state_attributes['previous_hilo_height'] = self.uom_height(high_low['previous']['height'])
-        self._state_attributes['previous_hilo_date'] = high_low['previous']['date']
+        self._state_attributes['previous_hilo_date'] = dt.strftime(utc_to_local(dt.strptime(high_low['previous']['date'],"%Y-%m-%d %H:%M:%S")),"%Y-%m-%d %H:%M:%S")
         self._state_attributes['next_hilo_event'] = high_low['next']['event']
         self._state_attributes['next_hilo_height'] = self.uom_height(high_low['next']['height'])
-        self._state_attributes['next_hilo_date'] = high_low['next']['date']
+        self._state_attributes['next_hilo_date'] = dt.strftime(utc_to_local(dt.strptime(high_low['next']['date'],"%Y-%m-%d %H:%M:%S")),"%Y-%m-%d %H:%M:%S")
         self.data['hilo'] = high_low
         self.next_event_dt = dt.strptime(high_low['next']['date'],"%Y-%m-%d %H:%M:%S")
 
     def set_wl15_state_attributes(self, minute_hand=0):
         index = "{:02d}".format(minute_hand)
         self._state_attributes['current_height'] = self.uom_height(self.data['wl15'][index]['height'])
-        self._state_attributes['current_height_as_of'] = self.data['wl15'][index]['date']
+        self._state_attributes['current_height_as_of'] = dt.strftime(utc_to_local(dt.strptime(self.data['wl15'][index]['date'],"%Y-%m-%d %H:%M:%S")),"%Y-%m-%d %H:%M:%S")
 
     def uom_height(self, height):
         if (self.uom == 'ft'):
@@ -146,6 +146,9 @@ def event_list(event_id=0, clear=False, lst=[]):
     if clear:
         lst.clear()
     return lst
+
+def utc_to_local(utc_dt):
+    return utc_dt.replace(tzinfo=timezone.utc).astimezone(tz=None)
 
 """
 def hilo_tide_event_handler(goal_team_id, goal_event_id, hass):
