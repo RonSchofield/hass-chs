@@ -11,14 +11,19 @@ from pychs import Predictions
 import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.const import (CONF_NAME, CONF_ID, CONF_SCAN_INTERVAL, CONF_UNIT_OF_MEASUREMENT, CONF_OFFSET)
+from homeassistant.const import (CONF_NAME,
+    CONF_ID,
+    CONF_SCAN_INTERVAL,
+    CONF_UNIT_OF_MEASUREMENT,
+    CONF_OFFSET
+)
 import homeassistant.helpers.config_validation as cv
 import homeassistant.util.dt as dt_util
 from homeassistant.helpers.entity import Entity
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = '0.0.1'
+__version__ = '1.0.0'
 
 CONF_ID = 'station_id'
 CONF_NAME = 'name'
