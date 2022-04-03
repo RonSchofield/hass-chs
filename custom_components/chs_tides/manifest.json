@@ -1,11 +1,12 @@
 {
   "domain": "chs_tides",
   "name": "Canadian Hydrographic Service (CHS) Tides",
-  "version" : "1.0.0",
+  "version" : "2.0.0",
   "documentation": "https://github.com/RonSchofield/hass-chs",
   "issue_tracker" : "https://github.com/RonSchofield/hass-chs/issues",
   "dependencies": [],
   "codeowners": ["@RonSchofield"],
-  "requirements": ["pychs==0.1.1","zeep==3.4.0"],
-  "iot_class": "cloud_polling"
+  "requirements": ["pychs==0.2.1"],
+  "iot_class": "cloud_polling",
+  "config_flow": true
 }

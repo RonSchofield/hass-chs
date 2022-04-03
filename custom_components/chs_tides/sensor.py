@@ -7,7 +7,7 @@ https://github.com/RonSchofield/hass-cms/blob/master/README.md
 
 import logging
 from datetime import timedelta, timezone, datetime as dt
-from pychs import Predictions
+from pychs import CHS_IWLS
 import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
@@ -23,7 +23,7 @@ from homeassistant.helpers.entity import Entity
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = '1.0.0'
+__version__ = '2.0.0'
 
 CONF_ID = 'station_id'
 CONF_NAME = 'name'
@@ -63,7 +63,7 @@ class CHSTideSensor(Entity):
         self._state_attributes = {}
         self._state_attributes['uom'] = uom
         #try to catch error
-        self.prediction = Predictions(self.station_id)
+        self.prediction = CHS_IWLS(self.station_id)
         self.data = {}
         self.next_event_dt = 0
 
