@@ -1,9 +1,9 @@
 """Config flow for the Canadian Hydrographic Service (CHS) Water Level Web Services integration."""
 
-import voluptuous as vol
 import aiohttp
 import logging
 import re
+import voluptuous as vol
 
 from pychs import CHS_IWLS
 
@@ -27,7 +27,7 @@ from .const import (
     DEFAULT_UNIT_OF_MEASUREMENT,
 )
 
-LOGGER = logging.getLogger(__name__)
+_LOGGER = logging.getLogger(__name__)
 
 async def validate_input(data):
     """Validate input"""
@@ -67,7 +67,7 @@ async def validate_input(data):
         CONF_LONGITUDE: longitude,
     }
 
-class IWLSConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class CHSConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for the Canadian Hydrographic Service (CHS) Water Level Web Services"""
 
     VERSION = 1
@@ -98,11 +98,11 @@ class IWLSConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 vol.Optional(CONF_STATION_CODE): str,
                 vol.Required(CONF_LATITUDE, default=self.hass.config.latitude): cv.latitude,
                 vol.Required(CONF_LONGITUDE, default=self.hass.config.longitude): cv.longitude,
-                vol.Required(CONF_SCAN_INTERVAL, default=60): int,
-                vol.Required(CONF_UNIT_OF_MEASUREMENT, default="Feet"): vol.In(
+                vol.Required(CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL): int,
+                vol.Required(CONF_UNIT_OF_MEASUREMENT, default=DEFAULT_UNIT_OF_MEASUREMENT): vol.In(
                     ["Feet", "Meter"]                        
                 ),
-                vol.Required(CONF_LANGUAGE, default="English"): vol.In(
+                vol.Required(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): vol.In(
                     ["English", "French"]
                 ),
             }
